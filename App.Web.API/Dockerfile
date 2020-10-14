@@ -17,7 +17,7 @@ COPY . .
 RUN dotnet build "App.Web.API/App.Web.API.csproj" -c Release -o /app/build
 RUN dotnet build "App.UnitTests/App.UnitTests.csproj" -c Release -o /app/build
 
-RUN dotnet test "App.UnitTests/App.UnitTests.csproj" --logger "trx;LogFileName=fastcommercelog.trx" 
+RUN dotnet test "App.UnitTests/App.UnitTests.csproj" --logger "trx;LogFileName=app.trx" 
 
 
 FROM build AS publish

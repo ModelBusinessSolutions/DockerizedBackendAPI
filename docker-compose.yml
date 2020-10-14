@@ -6,9 +6,7 @@ networks:
 
 services:
   App.web.api:
-    image: ${DOCKER_REGISTRY-}fastcommercewebapi
-    depends_on:
- 
+    image: ${DOCKER_REGISTRY-}appwebapi
     build:
       context: .
       dockerfile: App.Web.API/Dockerfile
@@ -19,18 +17,6 @@ services:
     ports:
       - "5000:443"
       - "5001:80"
-  postgres_image:
-    image: postgres:latest
-    container_name: postgres
-    ports:
-      - "5432:5432"
-    restart: always
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgresPassword"
-      POSTGRES_DB: "fastCommerce"
-    networks:
-      - dockerapi-dev
   redis_image:
     image: redis:latest
     ports:
@@ -60,23 +46,6 @@ services:
       - dockerapi-dev
     depends_on:
       - elasticsearch
-  pgadmin: 
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-    - "8080:8081"
-    environment:
-        PGADMIN_DEFAULT_EMAIL: m.utkukul@gmail.com
-        PGADMIN_DEFAULT_PASSWORD: BigSecret
-        PGADMIN_LISTEN_PORT: 8081
-    volumes:
-    - pgadmin-data:/var/lib/pgadmin
-    links:
-    - "postgres_image:pgsql-server"
-    networks:
-      - dockerapi-dev
 volumes:
   esdata:
      driver: local
-  database-data:
-  pgadmin-data:
