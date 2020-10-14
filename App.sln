@@ -15,7 +15,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.UnitTests", "App.UnitTests\App.UnitTests.csproj", "{42B86F69-612A-4B91-ADA2-B58D1D3C32B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "..\App.Core\App.Core.csproj", "{41FA41BA-BDEF-4654-A903-0DAD4B844193}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "App.Core\App.Core.csproj", "{41FA41BA-BDEF-4654-A903-0DAD4B844193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
