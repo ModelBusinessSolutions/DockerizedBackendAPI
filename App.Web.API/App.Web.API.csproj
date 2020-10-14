@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCommerce.Business\App.Business.csproj" />
+    <ProjectReference Include="..\App.Business\App.Business.csproj" />
   </ItemGroup>
 
 

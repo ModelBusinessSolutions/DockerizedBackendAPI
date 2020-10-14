@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\App.Core\App.Core.csproj" />
-    <ProjectReference Include="..\FastCommerce.DAL\App.DAL.csproj" />
-    <ProjectReference Include="..\FastCommerce.Entities\App.Entities.csproj" />
+    <ProjectReference Include="..\App.DAL\App.DAL.csproj" />
+    <ProjectReference Include="..\App.Entities\App.Entities.csproj" />
   </ItemGroup>
 
 </Project>
