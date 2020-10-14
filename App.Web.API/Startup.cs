@@ -38,7 +38,7 @@ namespace App.Web.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDomainDataServices();
+         //   services.AddDomainDataServices();
             services.AddTransient<IExampleManager, ExampleManager>();
             // Example Dependencies Injection
             // services.AddTransient<IUserManager, UserManager>();

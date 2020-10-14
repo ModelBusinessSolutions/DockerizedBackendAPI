@@ -19,17 +19,17 @@ namespace App.DAL
     }
 
 
-    public class DesignTimeDbContextFactory :  IDesignTimeDbContextFactory<dbContext>
-    {
-        public dbContext CreateDbContext(string[] args)
-        {
-            DbContextOptionsBuilder<dbContext> builder = new DbContextOptionsBuilder<dbContext>();
-            string connectionString = Environment.GetEnvironmentVariable("dbConnectionString");
-         //   var connectionString = "host=postgres_image;port=5432;Database=fastCommerce;Username=postgres;Password=postgresPassword;";
-            builder.UseNpgsql(connectionString);
-            Console.WriteLine($"Running DesignTime DB context. ({connectionString})");
-            return new dbContext(builder.Options);
-        }
-    }
+    //public class DesignTimeDbContextFactory :  IDesignTimeDbContextFactory<dbContext>
+    //{
+    //    public dbContext CreateDbContext(string[] args)
+    //    {
+    //        DbContextOptionsBuilder<dbContext> builder = new DbContextOptionsBuilder<dbContext>();
+    //        string connectionString = Environment.GetEnvironmentVariable("dbConnectionString");
+    //     //   var connectionString = "host=postgres_image;port=5432;Database=fastCommerce;Username=postgres;Password=postgresPassword;";
+    //        builder.UseNpgsql(connectionString);
+    //        Console.WriteLine($"Running DesignTime DB context. ({connectionString})");
+    //        return new dbContext(builder.Options);
+    //    }
+    //}
 
 }

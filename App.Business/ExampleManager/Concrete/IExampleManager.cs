@@ -6,10 +6,8 @@ namespace App.Business.ExampleManager.Concrete
 {
    public interface IExampleManager
     {
-
-        public bool getExampleValue()
-        {
-            return true;
-        }
+            
+        public bool getExampleValue();
+    
     }
 }
