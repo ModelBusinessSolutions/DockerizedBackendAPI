@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FastCommerce.Business
+namespace App.Business
 {
     class Program
     {

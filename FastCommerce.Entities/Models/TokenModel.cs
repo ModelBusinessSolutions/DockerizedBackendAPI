@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace FastCommerce.Entities.Models
+namespace App.Entities.Models
 {
     [JsonObject("tokenModel")]
     public class TokenModel
@@ -25,5 +24,4 @@ namespace FastCommerce.Entities.Models
         [JsonProperty("refreshExpiration")]
         public int RefreshExpiration { get; set; }
     }
-
 }

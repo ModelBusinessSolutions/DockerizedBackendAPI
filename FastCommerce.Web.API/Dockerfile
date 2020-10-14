@@ -7,24 +7,24 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["FastCommerce.Web.API/FastCommerce.Web.API.csproj", "FastCommerce.Web.API/"]
-COPY ["FastCommerce.Entities/FastCommerce.Entities.csproj", "FastCommerce.Entities/"]
-COPY ["FastCommerce.DAL/FastCommerce.DAL.csproj", "FastCommerce.DAL/"]
-COPY ["FastCommerce.UnitTests/FastCommerce.UnitTests.csproj", "FastCommerce.UnitTests/"]
-RUN dotnet restore "FastCommerce.Web.API/FastCommerce.Web.API.csproj"
-RUN dotnet restore "FastCommerce.UnitTests/FastCommerce.UnitTests.csproj"
+COPY ["App.Web.API/App.Web.API.csproj", "App.Web.API/"]
+COPY ["App.Entities/App.Entities.csproj", "App.Entities/"]
+COPY ["App.DAL/App.DAL.csproj", "App.DAL/"]
+COPY ["App.UnitTests/App.UnitTests.csproj", "App.UnitTests/"]
+RUN dotnet restore "App.Web.API/App.Web.API.csproj"
+RUN dotnet restore "App.UnitTests/App.UnitTests.csproj"
 COPY . . 
-RUN dotnet build "FastCommerce.Web.API/FastCommerce.Web.API.csproj" -c Release -o /app/build
-RUN dotnet build "FastCommerce.UnitTests/FastCommerce.UnitTests.csproj" -c Release -o /app/build
+RUN dotnet build "App.Web.API/App.Web.API.csproj" -c Release -o /app/build
+RUN dotnet build "App.UnitTests/App.UnitTests.csproj" -c Release -o /app/build
 
-RUN dotnet test "FastCommerce.UnitTests/FastCommerce.UnitTests.csproj" --logger "trx;LogFileName=fastcommercelog.trx" 
+RUN dotnet test "App.UnitTests/App.UnitTests.csproj" --logger "trx;LogFileName=fastcommercelog.trx" 
 
 
 FROM build AS publish
-RUN dotnet publish "FastCommerce.Web.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "App.Web.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "FastCommerce.Web.API.dll", "--urls", "http://*:5000;http://*:5001"]
+ENTRYPOINT ["dotnet", "App.Web.API.dll", "--urls", "http://*:5000;http://*:5001"]
 

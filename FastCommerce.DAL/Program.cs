@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FastCommerce.DAL
+namespace App.DAL
 {
     class Program
     {

@@ -3,23 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
-using FastCommerce.Business.CategoryManager.Abstract;
-using FastCommerce.Business.CategoryManager.Concrete;
-using FastCommerce.Business.ElasticSearch.Abstract;
-using FastCommerce.Business.ElasticSearch.Concrete;
-using FastCommerce.Business.OrderManager.Abstract;
-using FastCommerce.Business.OrderManager.Concrete;
-using FastCommerce.Business.ProductManager;
-using FastCommerce.Business.ProductManager.Abstract;
-using FastCommerce.Business.ProductManager.Concrete;
-using FastCommerce.Business.UserManager;
-using FastCommerce.Business.UserManager.Abstract;
-using FastCommerce.Business.UserManager.Concrete;
-using FastCommerce.DAL;
-using FastCommerce.Entities.Models;
-using FastCommerce.Web.API.Infrastructure;
-using FastCommerce.Web.API.Interfaces;
-using FastCommerce.Web.API.Models;
+using App.Business.ExampleManager.Abstract;
+using App.Business.ExampleManager.Concrete;
+using App.DAL;
+using App.Entities.Models;
+using App.Web.API.Infrastructure;
+using App.Web.API.Interfaces;
+using App.Web.API.Models;
 using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -31,10 +21,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Utility.MailServices;
-using Utility.Models;
 
-namespace FastCommerce.Web.API
+
+namespace App.Web.API
 {
     public class Startup
     {
@@ -50,18 +39,11 @@ namespace FastCommerce.Web.API
         {
             services.AddControllers();
             services.AddDomainDataServices();
-            services.AddScoped<IElasticSearchService, ElasticSearchManager>();
-            services.AddScoped<IElasticSearchConfigration, ElasticSearchConfigration>();
-            services.AddTransient<IUserManager, UserManager>();
-            services.AddTransient<IProductManager, ProductManager>();
-            services.AddTransient<ICategoryManager, CategoryManager>();
-            services.AddTransient<IPropertyManager, PropertyManager>();
-            services.AddTransient<IOrderManager, OrderManager>();
+            services.AddTransient<IExampleManager, ExampleManager>();
+            // Example Dependencies Injection
+            // services.AddTransient<IUserManager, UserManager>();
             services.AddMemoryCache();
             services.AddCors();
-
-
-            services.AddEmailSender(Configuration);
 
             services.AddStackExchangeRedisCache(options =>
             {
@@ -197,19 +179,9 @@ namespace FastCommerce.Web.API
         {
             //string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
             var connectionString = "host=postgres_image;port=5432;Database=fastCommerce;Username=postgres;Password=postgresPassword;";
-            services.AddDbContext<dbContext>(options => options.UseNpgsql(connectionString, y => y.MigrationsAssembly("FastCommerce.DAL")));
-            services.AddTransient<UserManager>();
-            services.AddTransient<IProductManager,ProductManager>();
+            services.AddDbContext<dbContext>(options => options.UseNpgsql(connectionString, y => y.MigrationsAssembly("App.DAL")));
+        
         }
     }
-    public static class EmailExtensions
-    {
-        public static void AddEmailSender(this IServiceCollection services, IConfiguration configuration)
-        {
-            //    var config = configuration.GetSection("Email").Get<EmailConfig>();
-            services.Configure<EmailConfig>(configuration.GetSection("Email"));
-            services.AddTransient<IEmailService, EmailService>();
-        }
-    }
-
+   
 }

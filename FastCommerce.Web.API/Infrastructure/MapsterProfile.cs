@@ -1,11 +1,10 @@
-﻿using FastCommerce.Entities.Entities;
-using FastCommerce.Web.API.Interfaces;
-using FastCommerce.Web.API.Models;
+﻿using App.Web.API.Interfaces;
+using App.Web.API.Models;
 using Mapster;
 using Microsoft.AspNetCore.Hosting;
 using System;
 
-namespace FastCommerce.Web.API.Infrastructure
+namespace App.Web.API.Infrastructure
 {
     public class MapsterProfile : IMapsterProfile
     {

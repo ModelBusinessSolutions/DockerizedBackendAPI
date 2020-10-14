@@ -1,4 +1,4 @@
-﻿namespace FastCommerce.Web.API.Interfaces
+﻿namespace App.Web.API.Interfaces
 {
     public interface IMapsterProfile
     {

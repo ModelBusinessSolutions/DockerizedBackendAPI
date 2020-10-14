@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FastCommerce.Web.API.Models
+namespace App.Web.API.Models
 {
     public class SenderEmailModel
     {

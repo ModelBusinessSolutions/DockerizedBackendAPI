@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FastCommerce.Entities
+namespace App.Entities
 {
     class Program
     {

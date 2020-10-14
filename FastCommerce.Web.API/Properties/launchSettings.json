@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "FastCommerce.Web.API": {
+    "App.Web.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "/swagger",

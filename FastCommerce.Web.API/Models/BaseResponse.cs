@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FastCommerce.Web.API.Models
+namespace App.Web.API.Models
 {
     public abstract class BaseResponse : HttpResponseMessage
     {

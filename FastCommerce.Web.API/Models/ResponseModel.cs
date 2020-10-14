@@ -1,10 +1,10 @@
-﻿using FastCommerce.Web.API.Interfaces;
+﻿using App.Web.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FastCommerce.Web.API.Models
+namespace App.Web.API.Models
 {
     public class Response<T> : BaseResponse, IResponse<T> where T : class
     {

@@ -5,16 +5,15 @@ networks:
     driver: bridge 
 
 services:
-  fastcommerce.web.api:
+  App.web.api:
     image: ${DOCKER_REGISTRY-}fastcommercewebapi
     depends_on:
-      - "postgres_image"
-      - "redis_image"
+ 
     build:
       context: .
-      dockerfile: FastCommerce.Web.API/Dockerfile
+      dockerfile: App.Web.API/Dockerfile
     environment:
-      DB_CONNECTION_STRING: "host=postgres_image;port=5432;Database=fastCommerce;Username=postgres;Password=postgresPassword"      
+      DB_CONNECTION_STRING: ""      
     networks:
       - dockerapi-dev
     ports:
