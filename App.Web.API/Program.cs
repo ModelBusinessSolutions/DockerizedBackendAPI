@@ -31,7 +31,6 @@ namespace App.Web.API
                 try
                 {
                     var context = services.GetRequiredService<dbContext>();
-                    context.Database.Migrate();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
